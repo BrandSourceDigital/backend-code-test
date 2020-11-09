@@ -14,6 +14,7 @@ let typeOrmConfig: TypeOrmModuleOptions = {
 
 if (process.env.DATABASE_URL) {
 	typeOrmConfig = {
+		type: 'postgres',
 		url: process.env.DATABASE_URL,
 		entities: [__dirname + '/../**/*.entity.{js, ts}'],
 		synchronize: true,
