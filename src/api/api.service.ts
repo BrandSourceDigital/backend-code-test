@@ -22,6 +22,21 @@ export class ApiService {
 		return contacts;
 	}
 
+	async getContactsPaginated(
+		page = 1,
+		itemsPerPage = 20
+	): Promise<[Contact[], number]> {
+		page = Math.max(1, page);
+
+		const [result, total] = await this.contactRepository.findAndCount({
+			relations: ['emails'],
+			take: itemsPerPage,
+			skip: (page - 1) * itemsPerPage,
+		});
+
+		return [result, total];
+	}
+
 	async createContact(createContactDto: ContactDto): Promise<Contact> {
 		const { firstName, lastName, emails } = createContactDto;
 
