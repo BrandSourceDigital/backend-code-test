@@ -40,8 +40,8 @@ export class ApiController {
 
 		const response = {
 			contacts: classToPlain(results) as ContactResponseDto[],
-			page: Math.max(1, pagination.page),
-			itemsPerPage: pagination.itemsPerPage,
+			page: Math.max(1, pagination.page || 1),
+			itemsPerPage: pagination.itemsPerPage || 20,
 			totalItems: count,
 		};
 
