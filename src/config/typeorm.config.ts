@@ -19,6 +19,7 @@ if (process.env.DATABASE_URL) {
 		entities: [__dirname + '/../**/*.entity.{js, ts}'],
 		extra: {
 			ssl: true,
+			rejectUnauthorized: false,
 		},
 		synchronize: true,
 	};
