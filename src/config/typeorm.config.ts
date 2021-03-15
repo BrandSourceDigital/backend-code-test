@@ -17,6 +17,9 @@ if (process.env.DATABASE_URL) {
 		type: 'postgres',
 		url: process.env.DATABASE_URL,
 		entities: [__dirname + '/../**/*.entity.{js, ts}'],
+		extra: {
+			ssl: true,
+		},
 		synchronize: true,
 	};
 }
