@@ -32,6 +32,9 @@ export class ApiService {
 			relations: ['emails'],
 			take: itemsPerPage,
 			skip: (page - 1) * itemsPerPage,
+			order: {
+				id: 'DESC',
+			},
 		});
 
 		return [result, total];
